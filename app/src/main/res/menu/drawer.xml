@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_github"
+            android:checked="false"
+            android:icon="@drawable/icon_code"
+            android:title="@string/drawer_github" />
+        <item
+            android:id="@+id/drawer_warcraft"
+            android:checked="false"
+            android:icon="@drawable/icon_warcraft"
+            android:title="@string/drawer_warcraft"/>
+
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_ui_1"
+            android:checked="false"
+            android:icon="@drawable/icon_extension"
+            android:title="@string/drawer_ui_first"/>
+
+        <item
+            android:id="@+id/drawer_ui_2"
+            android:checked="false"
+            android:icon="@drawable/icon_dashboard"
+            android:title="@string/drawer_ui_second"/>
+    </group>
+</menu>

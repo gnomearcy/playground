@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply from: "${rootDir}/config/libs.gradle"
+apply from: "${rootDir}/config/common.gradle"
+
+android {
+    
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId package_name
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+        buildConfigField("String", "WOW_API_KEY", "\"stbc6vudhnka8hsrz4da86mz3r7ez2qp\"")
+
+    }
+    buildTypes {
+        debug{
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies
+{
+    compile fragargs.lib
+    annotationProcessor fragargs.apt
+    compile retrofit
+    compile glide
+
+    compile support
+    compile support_recycle
+    compile support_annotations
+    compile support_design
+    compile support_percent
+    compile support_card
+
+    compile rx_java2.core
+    compile rx_java2.android
+    compile circle_iview
+
+    compile butterknife.lib
+    annotationProcessor butterknife.apt
+
+    compile gson
+    compile dagger.lib
+    annotationProcessor dagger.apt
+
+}

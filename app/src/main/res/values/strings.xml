@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Span.RxJava</string>
+    <string name="drawer_github">Github</string>
+    <string name="drawer_ui_first">UI demo 1</string>
+    <string name="drawer_ui_second">UI demo 2</string>
+    <string name="title_activity_github">Github</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="drawer_warcraft">World of warcraft</string>
+</resources>

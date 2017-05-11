@@ -1,0 +1,14 @@
+def PACKAGE_NAME = "package_name"
+
+ext{
+    package_name = "eu.span.dev.rxjava"
+    version_code = 1
+    version_name = "1.0"
+    min_sdk_version = 16
+    target_sdk_version = 25
+    gradle_version = "2.2.3"
+}
+
+ext.packageName = {
+    return rootProject.extensions.getByName("ext").getProperties().get("package_name");
+}
