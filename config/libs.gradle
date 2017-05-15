@@ -1,5 +1,11 @@
 ext{
-    retrofit = 'com.squareup.retrofit2:retrofit:2.1.0'
+    def retrofit_version = "2.2.0"
+    retrofit = [
+            lib: "com.squareup.retrofit2:retrofit:${retrofit_version}",
+            rxjava_adapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
+            gson_converter: "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    ]
+
     glide = 'com.github.bumptech.glide:glide:3.7.0'
     fragargs =  [
                     lib: 'com.hannesdorfmann.fragmentargs:annotation:3.0.2',

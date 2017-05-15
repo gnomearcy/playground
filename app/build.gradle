@@ -30,7 +30,8 @@ dependencies
 {
     compile fragargs.lib
     annotationProcessor fragargs.apt
-    compile retrofit
+    compile retrofit.lib
+    compile retrofit.gson_converter
     compile glide
 
     compile support
@@ -40,8 +41,10 @@ dependencies
     compile support_percent
     compile support_card
 
+    // RX Java
     compile rx_java2.core
     compile rx_java2.android
+    compile retrofit.rxjava_adapter
     compile circle_iview
 
     compile butterknife.lib

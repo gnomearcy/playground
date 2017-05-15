@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="eu.span.dev.rxjava"
+<manifest package="eu.toma.dev.playground"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -21,6 +21,26 @@
             android:name=".github.GithubActivity"
             android:label="@string/title_activity_github"
             android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".warcraft.WarcraftActivity"
+            android:label="@string/title_activity_warcraft"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".warcraft.mounts.MountActivity"
+            android:label="@string/title_activity_mount"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".rx_example_one.RxOneActivity"
+            android:label="@string/title_activity_rx_one"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

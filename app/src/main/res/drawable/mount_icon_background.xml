@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true">
+        <shape android:shape="oval">
+            <stroke android:color="@color/mount_icon_true"
+                    android:width="@dimen/mount_icon_border"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="oval">
+            <stroke android:color="@color/mount_icon_false"
+                    android:width="@dimen/mount_icon_border"/>
+            <padding
+                android:bottom="@dimen/mount_icon_background_padd"
+                android:top="@dimen/mount_icon_background_padd"
+                android:left="@dimen/mount_icon_background_padd"
+                android:right="@dimen/mount_icon_background_padd"/>
+        </shape>
+    </item>
+</selector>

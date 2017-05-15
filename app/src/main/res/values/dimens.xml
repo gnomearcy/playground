@@ -4,4 +4,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="list_item_height">56dp</dimen>
+    <dimen name="mount_icon_border">2dp</dimen>
+    <dimen name="mount_icon_background_padd">6dp</dimen>
+    <dimen name="mount_icon_size">56dp</dimen>
+    <dimen name="mount_ability_size">24dp</dimen>
+    <dimen name="card_title_txt">20dp</dimen>
 </resources>

@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="mount_icon_true">#0f0</color>
+    <color name="mount_icon_false">#f00</color>
+    <color name="card_title">#333</color>
 </resources>

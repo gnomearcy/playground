@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    tools:background="#4500"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/mount_icon"
+        android:src="@drawable/icon_warcraft"
+        android:layout_width="@dimen/mount_icon_size"
+        android:layout_height="@dimen/mount_icon_size"/>
+
+    <TextView
+        android:id="@+id/mount_name"
+        android:layout_toEndOf="@+id/mount_icon"
+        android:layout_toRightOf="@+id/mount_icon"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        tools:text="mount name name name name name name name name name name "
+        android:textColor="@color/card_title"
+        android:textSize="@dimen/card_title_txt"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/mount_abilities"
+        android:layout_toRightOf="@+id/mount_icon"
+        android:layout_toEndOf="@+id/mount_icon"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_alignBottom="@+id/mount_icon"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mount_ground"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_ground_off_24"
+            android:layout_width="@dimen/mount_ability_size"
+            android:layout_height="@dimen/mount_ability_size"/>
+
+        <ImageView
+            android:id="@+id/mount_flying"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_flying_off_24"
+            android:layout_width="@dimen/mount_ability_size"
+            android:layout_height="@dimen/mount_ability_size"/>
+        <ImageView
+            android:id="@+id/mount_aquatic"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_aquatic_off_24"
+            android:layout_width="@dimen/mount_ability_size"
+            android:layout_height="@dimen/mount_ability_size"/>
+
+        <ImageView
+            android:id="@+id/mount_jumping"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_jump_off_24"
+            android:layout_width="@dimen/mount_ability_size"
+            android:layout_height="@dimen/mount_ability_size"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
