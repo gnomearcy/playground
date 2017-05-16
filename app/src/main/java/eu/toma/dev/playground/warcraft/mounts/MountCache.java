@@ -3,14 +3,11 @@ package eu.toma.dev.playground.warcraft.mounts;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
-import io.reactivex.Maybe;
+import eu.toma.dev.playground.warcraft.di.MountScope;
 import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Predicate;
 
-@Singleton
+@MountScope
 public class MountCache
 {
     private List<Mount> cachedMounts;
@@ -20,19 +17,13 @@ public class MountCache
     {
     }
 
-    public Maybe<List<Mount>> getCachedMounts()
+    public Observable<List<Mount>> getCachedMounts()
     {
-        return Observable.fromIterable(cachedMounts).toList().filter(new Predicate<List<Mount>>()
-        {
-            @Override
-            public boolean test(@NonNull List<Mount> mounts) throws Exception
-            {
-                if(mounts == null){
-                    throw new Exception("no cached mounts available");
-                }
-                return true;
-            }
-        });
+        if(cachedMounts != null){
+            return Observable.fromIterable(cachedMounts).toList().toObservable();
+        } else {
+            return Observable.error(new Exception("no cached mounts available"));
+        }
     }
 
     public void save(List<Mount> mounts)

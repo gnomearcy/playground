@@ -20,8 +20,8 @@ public class MountModule
 
     @MountScope
     @Provides
-    public MountAPI giveApi(Retrofit client){
-        return client.create(MountAPI.class);
+    public MountApiDefinition giveApi(Retrofit client){
+        return client.create(MountApiDefinition.class);
     }
 
 

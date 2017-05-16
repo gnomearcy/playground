@@ -32,6 +32,7 @@ dependencies
     annotationProcessor fragargs.apt
     compile retrofit.lib
     compile retrofit.gson_converter
+    compile retrofit.logger
     compile glide
 
     compile support

@@ -13,12 +13,15 @@ import eu.toma.dev.playground.warcraft.di.MountScope;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
@@ -42,87 +45,80 @@ public class MountService
     /**
     *   Disposable is a Subscription.
     */
-    public Disposable getMounts(final Callback<List<Mount>> callback)
+    public void getMounts(final Callback<List<Mount>> callback)
     {
-        final Maybe<List<Mount>> mountsFromAPI = api.getMountsFromAPI();
-        final Maybe<List<Mount>> mountsFromDb = db.mountsFromDb();
-        final Maybe<List<Mount>> cachedMounts = cache.getCachedMounts();
+        final Observable<List<Mount>> mountsFromAPI = api.getMountsFromAPI();
+        final Observable<List<Mount>> mountsFromDb = db.mountsFromDb();
+        final Observable<List<Mount>> cachedMounts = cache.getCachedMounts();
 
-        cachedMounts.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSuccess(new Consumer<List<Mount>>()
+
+        final Observer<List<Mount>> ob = new DisposableObserver<List<Mount>>()
+        {
+            @Override
+            public void onNext(@NonNull List<Mount> mounts)
+            {
+                Log.d(RX_APP.TAG, "[MountService] - [onNext]: ");
+                callback.onSuccess(mounts);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e)
+            {
+                Log.d(RX_APP.TAG, "[MountService] - [onError]: ");
+                callback.onError();
+            }
+
+            @Override
+            public void onComplete()
+            {
+                Log.d(RX_APP.TAG, "[MountService] - [onComplete]: ");
+            }
+        };
+
+        cachedMounts.doOnNext(new Consumer<List<Mount>>()
                 {
                     @Override
                     public void accept(@NonNull List<Mount> mounts) throws Exception
                     {
+                        Log.d(RX_APP.TAG, "[MountService] - [accept]: returning items from CACHE");
                         callback.onSuccess(mounts);
                     }
                 })
-                .doOnError(new Consumer<Throwable>()
-                {
-                    @Override
-                    public void accept(@NonNull Throwable throwable) throws Exception
-                    {
-                        Log.d(RX_APP.TAG, "[MountService] - [accept]: cache error - " + throwable.getMessage());
-                        mountsFromDb.doOnSuccess(new Consumer<List<Mount>>()
-                        {
-                            @Override
-                            public void accept(@NonNull List<Mount> mounts) throws Exception
-                            {
-                                cache.save(mounts);
-                                callback.onSuccess(mounts);
-                            }
-                        })
-                        .doOnError(new Consumer<Throwable>()
-                        {
-                            @Override
-                            public void accept(@NonNull Throwable throwable) throws Exception
-                            {
-                                Log.d(RX_APP.TAG, "[MountService] - [accept]: db error - " + throwable.getMessage());
-                                mountsFromAPI.doOnSuccess(new Consumer<List<Mount>>()
-                                {
-                                    @Override
-                                    public void accept(@NonNull List<Mount> mounts) throws Exception
-                                    {
+//                .onErrorResumeNext(mountsFromDb)
+                .onExceptionResumeNext(mountsFromDb);
 
-                                    }
-                                })
-                                    .doOnError(new Consumer<Throwable>()
-                                {
-                                    @Override
-                                    public void accept(@NonNull Throwable throwable) throws Exception
-                                    {
-
-                                    }
-                                });
-                            }
-                        });
-                    }
-                })
-                .onErrorResumeNext(mountsFromDb.onErrorResumeNext(mountsFromAPI));
-
-        mountsFromDb.onErrorResumeNext(apiSource).onErrorResumeNext(cacheObservable)
-        Observable.concat(apiSource, mountsFromDb)
-
-        .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(
-                new Function<Throwable, ObservableSource<? extends List<Mount>>>()
-                {
-                    @Override
-                    public ObservableSource<? extends List<Mount>> apply(@NonNull Throwable throwable) throws Exception
-                    {
-                        return Observable.error(throwable);
-                    }
-                }).subscribe(new Consumer<List<Mount>>()
+        mountsFromDb.doOnNext(new Consumer<List<Mount>>()
         {
             @Override
             public void accept(@NonNull List<Mount> mounts) throws Exception
             {
-                
+                Log.d(RX_APP.TAG, "[MountService] - [accept]: returning items from DATABASE");
+                cache.save(mounts);
+                callback.onSuccess(mounts);
+            }
+        })
+//        .onErrorResumeNext(mountsFromAPI);
+        .onExceptionResumeNext(mountsFromAPI);
+
+        mountsFromAPI.doOnNext(new Consumer<List<Mount>>()
+        {
+            @Override
+            public void accept(@NonNull List<Mount> mounts) throws Exception
+            {
+                Log.d(RX_APP.TAG, "[MountService] - [accept]: returning items from API");
+                db.save(mounts);
+                callback.onSuccess(mounts);
+            }
+        })
+        .doOnError(new Consumer<Throwable>()
+        {
+            @Override
+            public void accept(@NonNull Throwable throwable) throws Exception
+            {
+                ob.onError(throwable);
             }
         });
 
-        return db.mountsFromDb().onErrorResumeNext(mountsFromApi);
+        cachedMounts.subscribe(ob);
     }
 }

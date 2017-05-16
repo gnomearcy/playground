@@ -3,7 +3,8 @@ ext{
     retrofit = [
             lib: "com.squareup.retrofit2:retrofit:${retrofit_version}",
             rxjava_adapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
-            gson_converter: "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+            gson_converter: "com.squareup.retrofit2:converter-gson:${retrofit_version}",
+            logger: 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     ]
 
     glide = 'com.github.bumptech.glide:glide:3.7.0'
