@@ -8,13 +8,13 @@ import android.view.View;
 import java.util.concurrent.TimeUnit;
 
 import eu.toma.dev.playground.R;
-import eu.toma.dev.playground.warcraft.api.MountService;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
+import warcraft.mounts.MountService;
 
 public class RxOneActivity extends AppCompatActivity
 {

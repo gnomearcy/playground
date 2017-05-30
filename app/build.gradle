@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: "${rootDir}/config/libs.gradle"
 apply from: "${rootDir}/config/common.gradle"
 
@@ -27,6 +28,10 @@ android {
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    kapt{
+        generateStubs = true
     }
 }
 
@@ -58,6 +63,7 @@ dependencies
     compile gson
     compile dagger.lib
     annotationProcessor dagger.apt
+    kapt dagger.apt
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 }
