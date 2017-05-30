@@ -11,4 +11,6 @@
     <string name="boss_desc">Boss image</string>
     <string name="title_activity_mount">MountActivity</string>
     <string name="title_activity_rx_one">RxOneActivity</string>
+    <string name="title_activity_mounts">MountsActivity</string>
+    <string name="title_activity_talents">TalentsActivity</string>
 </resources>

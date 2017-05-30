@@ -28,11 +28,6 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".warcraft.mounts.MountActivity"
-            android:label="@string/title_activity_mount"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
             android:name=".rx_example_one.RxOneActivity"
             android:label="@string/title_activity_rx_one"
             android:theme="@style/AppTheme">
@@ -41,6 +36,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".warcraft.mounts.MountsActivity"
+            android:label="@string/title_activity_mounts"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".warcraft.talent.TalentsActivity"
+            android:label="@string/title_activity_talents"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

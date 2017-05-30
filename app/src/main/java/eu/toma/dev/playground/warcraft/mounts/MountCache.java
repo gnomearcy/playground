@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import eu.toma.dev.playground.warcraft.di.MountScope;
+import eu.toma.dev.playground.warcraft.mounts.di.Mounts;
 import io.reactivex.Observable;
 
-@MountScope
+@Mounts
 public class MountCache
 {
     private List<Mount> cachedMounts;

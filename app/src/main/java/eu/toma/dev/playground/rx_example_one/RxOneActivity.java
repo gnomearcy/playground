@@ -4,18 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
-
-import eu.toma.dev.playground.Callback;
 import eu.toma.dev.playground.R;
-import eu.toma.dev.playground.warcraft.di.DaggerMountComponent;
-import eu.toma.dev.playground.warcraft.mounts.Mount;
-import eu.toma.dev.playground.warcraft.mounts.MountService;
+import eu.toma.dev.playground.warcraft.api.MountService;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -25,43 +18,13 @@ import io.reactivex.functions.Consumer;
 
 public class RxOneActivity extends AppCompatActivity
 {
-    @Inject
-    MountService service;
+    private MountService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        mountService();
-    }
-
-    private void mountService()
-    {
-        Button b = new Button(this);
-        b.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                service.getMounts(new Callback<List<Mount>>()
-                {
-                    @Override
-                    public void onSuccess(List<Mount> data)
-                    {
-                        Log.d(RX_APP.TAG, "[RxOneActivity] - [onSuccess]: mounts success - ");
-                    }
-
-                    @Override
-                    public void onError()
-                    {
-                        Log.d(RX_APP.TAG, "[RxOneActivity] - [onError]: mounts error");
-                    }
-                });
-            }
-        });
-        setContentView(b);
-        DaggerMountComponent.create().inject(this);
+        multithreadingTests();
     }
 
     private void multithreadingTests()

@@ -1,4 +1,4 @@
-package eu.toma.dev.playground.warcraft;
+package eu.toma.dev.playground.warcraft.bosses;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.toma.dev.playground.R;
-import eu.toma.dev.playground.warcraft.model.boss.Boss;
 
 /**
 * Adapter is responsible for:

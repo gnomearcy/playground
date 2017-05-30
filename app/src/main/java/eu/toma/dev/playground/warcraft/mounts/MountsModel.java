@@ -1,10 +1,12 @@
 package eu.toma.dev.playground.warcraft.mounts;
 
+import eu.toma.dev.playground.warcraft.api.MountService;
+
 public class MountsModel
 {
-    private final MountAPI api;
+    private final MountService api;
 
-    public MountsModel(MountAPI api)
+    public MountsModel(MountService api)
     {
         this.api = api;
     }

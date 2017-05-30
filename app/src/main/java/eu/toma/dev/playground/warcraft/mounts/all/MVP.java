@@ -1,10 +1,10 @@
-package eu.toma.dev.playground.warcraft;
+package eu.toma.dev.playground.warcraft.mounts.all;
 
 import java.util.List;
 
 import eu.toma.dev.playground.warcraft.mounts.Mount;
 
-public interface Mounts
+public interface MVP
 {
     interface View
     {

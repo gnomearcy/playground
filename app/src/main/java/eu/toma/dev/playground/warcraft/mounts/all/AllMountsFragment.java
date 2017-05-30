@@ -1,4 +1,4 @@
-package eu.toma.dev.playground.warcraft.mounts;
+package eu.toma.dev.playground.warcraft.mounts.all;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,11 +17,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.toma.dev.playground.R;
-import eu.toma.dev.playground.warcraft.Mounts;
 import eu.toma.dev.playground.warcraft.WoWBaseFragment;
 import eu.toma.dev.playground.warcraft.mounts.Mount;
 
-public class AllMountsFragment extends WoWBaseFragment implements Mounts.View
+public class AllMountsFragment extends WoWBaseFragment implements MVP.View
 {
     @BindView(R.id.mounts_recycler)
     protected RecyclerView recycler;
@@ -32,7 +31,7 @@ public class AllMountsFragment extends WoWBaseFragment implements Mounts.View
     private GridLayoutManager gridManager;
 
     @Inject
-    protected MountsPresenter presenter;
+    protected AllMountsPresenter presenter;
 
     @Nullable
     @Override

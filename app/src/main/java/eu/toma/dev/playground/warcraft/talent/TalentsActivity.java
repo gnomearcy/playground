@@ -1,4 +1,4 @@
-package eu.toma.dev.playground.warcraft.mounts;
+package eu.toma.dev.playground.warcraft.talent;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,14 +9,14 @@ import android.view.View;
 
 import eu.toma.dev.playground.R;
 
-public class MountActivity extends AppCompatActivity
+public class TalentsActivity extends AppCompatActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mount);
+        setContentView(R.layout.activity_talents);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

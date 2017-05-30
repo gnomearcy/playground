@@ -1,4 +1,4 @@
-package eu.toma.dev.playground.warcraft.mounts;
+package eu.toma.dev.playground.warcraft.mounts.details;
 
 import eu.toma.dev.playground.warcraft.WoWBaseFragment;
 
